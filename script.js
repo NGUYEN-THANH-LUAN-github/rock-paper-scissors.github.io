@@ -40,4 +40,4 @@ function game() {
     pScore === 5 ? console.log("You won the game!") : console.log("You lost the game!");
 }
 
-game();
+setTimeout(game(), 1000);
