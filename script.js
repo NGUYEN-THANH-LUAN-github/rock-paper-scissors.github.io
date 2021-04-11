@@ -1,43 +1,62 @@
+let pChoice, cChoice;
+let pScore = 0,
+    cScore = 0,
+    ties = 0,
+    games = 0;
+
+const pScoreDisplay = document.querySelector('.pScore');
+const cScoreDisplay = document.querySelector('.cScore');
+const gamesPlayed = document.querySelector('.games');
+const numOfTies = document.querySelector('.ties');
+
 const choices = ['rock', 'paper', 'scissors'];
 
-let pScore = 0,
-    cScore = 0;
-
-function randomIntFromInterval(min, max) { // min and max included 
+function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
 function computerPlay() {
     const index = randomIntFromInterval(1, 3) - 1;
-    return choices[index];
+    cChoice = choices[index];
 };
 
-function playRound(pSelection, cSelection) {
-    if (pSelection === cSelection) {
-        console.log(`It's a tie. You and computer both chose "${pSelection}"`);
-    } else if (pSelection === "rock" && cSelection === "paper" ||
-        pSelection === "paper" && cSelection === "scissors" ||
-        pSelection === "scissors" && cSelection === "rock") {
-        console.log(`You lost this round! You chose "${pSelection}" vs Computer's choice "${cSelection}"`);
+
+function playRound(pChoice, cChoice) {
+    if (pChoice === cChoice) {
+        console.log(`It's a tie. You and computer both chose "${pChoice}"`);
+        ties++;
+        numOfTies.innerText = `${ties}`;
+    } else if (pChoice === "rock" && cChoice === "paper" ||
+        pChoice === "paper" && cChoice === "scissors" ||
+        pChoice === "scissors" && cChoice === "rock") {
         cScore++;
+        cScoreDisplay.innerText = `${cScore}`;
     } else {
-        console.log(`You won this round! You chose "${pSelection}" vs Computer's choice "${cSelection}"`);
         pScore++;
+        pScoreDisplay.innerText = `${pScore}`;
     }
-    console.log(`${pScore} vs. ${cScore}`);
 }
 
+const btns = document.querySelectorAll('.btn');
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
 
+rock.addEventListener('click', () => {
+    pChoice = "rock";
+})
+paper.addEventListener('click', () => {
+    pChoice = "paper";
+})
+scissors.addEventListener('click', () => {
+    pChoice = "scissors";
+})
 
-function game() {
-    while (pScore < 5 && cScore < 5) {
-        const cSelection = computerPlay();
-
-        const pSelection = prompt("enter your choice").toLowerCase();
-
-        playRound(pSelection, cSelection);
-    }
-    pScore === 5 ? console.log("You won the game!") : console.log("You lost the game!");
-}
-
-setTimeout(game(), 1000);
+btns.forEach(btn => btn.addEventListener('click', () => {
+    games++;
+    gamesPlayed.innerText = games;
+    computerPlay();
+    playRound(pChoice, cChoice);
+    if (pScore === 5) console.log("You won the game!");
+    if (cScore === 5) console.log("You lost the game!");
+}));

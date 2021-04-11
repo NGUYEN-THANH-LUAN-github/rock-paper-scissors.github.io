@@ -1,4 +1,92 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Permanent Marker', cursive;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 body {
-    background: rgb(2, 0, 36);
-    background: linear-gradient( 250deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient( 220deg, rgb(243, 243, 243) 0%, rgb(100, 185, 200) 50%, rgba(0, 55, 66, 0.774) 100%);
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+.container {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    background-color: rgb(240, 240, 240);
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    margin: auto 0;
+    box-shadow: 1px 1px 20px black;
+    font-size: 1em;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    box-shadow: 1px 1px 20px rgb(215, 240, 106);
+    border: none;
+}
+
+.btn:hover p {
+    font-size: 1.5em;
+}
+
+.btn:active {
+    transform: scale(1);
+    background-color: rgb(170, 170, 170);
+}
+
+.btn p {
+    margin: auto;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.score-board {
+    margin: 0 auto auto;
+    text-align: center;
+    line-height: 0.5;
+}
+
+.score {
+    margin-bottom: 4em;
+}
+
+@media (min-width: 900px) {
+    .container {
+        height: 55%;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .btn {
+        width: 15em;
+        height: 15em;
+    }
+    .btn p {
+        font-size: 2em;
+        font-weight: 500;
+    }
+    .btn:hover p {
+        font-size: 2.2em;
+        font-weight: 600;
+    }
+    .score-board {
+        font-size: 1.5em;
+    }
 }
