@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     font-family: 'Permanent Marker', cursive;
 }
 
@@ -16,7 +16,7 @@ body {
 
 .container {
     width: 100%;
-    height: 70%;
+    height: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,48 +24,112 @@ body {
 }
 
 .btn {
-    background-color: rgb(240, 240, 240);
-    width: 10em;
-    height: 10em;
+    border-style: none;
+    width: 13em;
+    height: 13em;
     border-radius: 50%;
-    text-align: center;
-    display: flex;
     margin: auto 0;
     box-shadow: 1px 1px 20px black;
-    font-size: 1em;
 }
 
 .btn:hover {
     transform: scale(1.05);
-    background-color: rgb(255, 255, 255);
     cursor: pointer;
     box-shadow: 1px 1px 20px rgb(215, 240, 106);
-    border: none;
-}
-
-.btn:hover p {
-    font-size: 1.5em;
 }
 
 .btn:active {
     transform: scale(1);
-    background-color: rgb(170, 170, 170);
 }
 
-.btn p {
-    margin: auto;
-    font-size: 1.3em;
-    font-weight: 600;
+.btn:disabled {
+    transform: none;
+    cursor: auto;
+    box-shadow: 1px 1px 20px black;
+    opacity: 0.5;
+}
+
+.rock {
+    background-image: url(./images/rock.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.paper {
+    background-image: url(./images/paper.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.scissors {
+    background-image: url(./images/scissors.jpg);
+    background-position: center;
+    background-size: 96%;
 }
 
 .score-board {
+    width: 100%;
     margin: 0 auto auto;
     text-align: center;
     line-height: 0.5;
+    position: relative;
 }
 
 .score {
     margin-bottom: 4em;
+}
+
+.buttons {
+    position: absolute;
+    bottom: -35%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.reset,
+.replay {
+    width: 15em;
+    height: 4em;
+    border-radius: 5px;
+    border-style: none;
+    box-shadow: 5px 7px 10px black;
+}
+
+.buttons p {
+    margin: auto;
+    font-size: 1.8em;
+}
+
+.reset:hover,
+.replay:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+.reset:active,
+.replay:active {
+    transform: scale(1.01);
+}
+
+.reset {
+    background-color: rgba(255, 0, 0, 0.733);
+}
+
+.reset:disabled {
+    transform: scale(1);
+    background-color: rgba(255, 0, 0, 0.349);
+    cursor: auto;
+}
+
+.replay {
+    background-color: rgba(9, 255, 0, 0.733);
+}
+
+.replay:disabled {
+    transform: scale(1);
+    background-color: rgba(9, 255, 0, 0.349);
+    cursor: auto;
 }
 
 @media (min-width: 900px) {
@@ -78,15 +142,20 @@ body {
         width: 15em;
         height: 15em;
     }
-    .btn p {
-        font-size: 2em;
-        font-weight: 500;
-    }
-    .btn:hover p {
-        font-size: 2.2em;
-        font-weight: 600;
-    }
     .score-board {
         font-size: 1.5em;
+    }
+    .buttons {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .buttons button {
+        margin-inline: 10%;
+        width: 9em;
+        height: 16em;
+        border-radius: 10px;
     }
 }

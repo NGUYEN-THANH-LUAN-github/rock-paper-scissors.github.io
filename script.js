@@ -25,15 +25,15 @@ function playRound(pChoice, cChoice) {
     if (pChoice === cChoice) {
         console.log(`It's a tie. You and computer both chose "${pChoice}"`);
         ties++;
-        numOfTies.innerText = `${ties}`;
+        numOfTies.innerText = ties;
     } else if (pChoice === "rock" && cChoice === "paper" ||
         pChoice === "paper" && cChoice === "scissors" ||
         pChoice === "scissors" && cChoice === "rock") {
         cScore++;
-        cScoreDisplay.innerText = `${cScore}`;
+        cScoreDisplay.innerText = `: ${cScore}`;
     } else {
         pScore++;
-        pScoreDisplay.innerText = `${pScore}`;
+        pScoreDisplay.innerText = `: ${pScore}`;
     }
 }
 
@@ -52,11 +52,50 @@ scissors.addEventListener('click', () => {
     pChoice = "scissors";
 })
 
+const reset = document.querySelector('.reset');
+const replay = document.querySelector('.replay');
+
 btns.forEach(btn => btn.addEventListener('click', () => {
-    games++;
-    gamesPlayed.innerText = games;
-    computerPlay();
-    playRound(pChoice, cChoice);
-    if (pScore === 5) console.log("You won the game!");
-    if (cScore === 5) console.log("You lost the game!");
+    reset.removeAttribute('disabled');
+    if (pScore < 5 && cScore < 5) {
+        games++;
+        gamesPlayed.innerText = games;
+        computerPlay();
+        playRound(pChoice, cChoice);
+    }
+    if (pScore === 5) {
+        reset.setAttribute('disabled', '');
+        replay.removeAttribute('disabled');
+        btns.forEach(btn => { btn.setAttribute('disabled', '') })
+        pScoreDisplay.innerHTML = ` <span style="color:green">WON!</span> (${pScore})`;
+        cScoreDisplay.innerHTML = ` <span style="color:red">LOST</span> (${cScore})`;
+    };
+    if (cScore === 5) {
+        reset.setAttribute('disabled', '');
+        replay.removeAttribute('disabled');
+        btns.forEach(btn => { btn.setAttribute('disabled', '') })
+        pScoreDisplay.innerHTML = ` <span style="color:red">LOST</span> (${pScore})`;
+        cScoreDisplay.innerHTML = ` <span style="color:green">WON</span> (${cScore})`;
+    };
 }));
+
+function returnToStart() {
+    games = 0;
+    pScore = 0;
+    cScore = 0;
+    ties = 0;
+    cScoreDisplay.innerText = `: ${cScore}`;
+    pScoreDisplay.innerText = `: ${pScore}`;
+    numOfTies.innerText = ties;
+    gamesPlayed.innerText = games;
+}
+
+reset.addEventListener('click', () => {
+    returnToStart();
+    reset.setAttribute('disabled', '')
+})
+replay.addEventListener('click', () => {
+    returnToStart();
+    replay.setAttribute('disabled', '');
+    btns.forEach(btn => { btn.removeAttribute('disabled') })
+})
