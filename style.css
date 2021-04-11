@@ -42,6 +42,10 @@ body {
     transform: scale(1);
 }
 
+.btn:focus {
+    outline: 0;
+}
+
 .btn:disabled {
     transform: none;
     cursor: auto;
