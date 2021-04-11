@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 * {
     /* box-sizing: border-box; */
     font-family: 'Permanent Marker', cursive;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 body {
     margin: 0;
     padding: 0;
