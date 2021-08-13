@@ -1,5 +1,5 @@
-# rock_paper_scissors.github.io
+# rock_paper_scissors
 
 a project from The Odin Project
 
-[Demo](https://nguyen-thanh-luan-github.github.io/rock-paper-scissors.github.io/)
+[Demo](https://thanh-luan-nguyen.github.io/rock-paper-scissors/)
