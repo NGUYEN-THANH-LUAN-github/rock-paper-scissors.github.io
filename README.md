@@ -1,4 +1,4 @@
-# 🌱 rock_paper_scissors
+# 🌱 rock-paper-scissors game
 
 👉 [Live Demo](https://thanh-luan-nguyen.github.io/rock-paper-scissors/)
 
